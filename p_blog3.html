@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ram Ocean Blog</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* 🌊 BACKGROUND */
+body {
+  background: linear-gradient(-45deg, #021526, #03346E, #03506F, #0A2647);
+  background-size: 400% 400%;
+  animation: bg 12s ease infinite;
+  color: white;
+}
+
+@keyframes bg {
+  0% {background-position: 0%}
+  50% {background-position: 100%}
+  100% {background-position: 0%}
+}
+
+/* NAV */
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 10%;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+}
+
+nav h1 {
+  color: #00eaff;
+  text-shadow: 0 0 10px #00eaff;
+}
+
+nav ul {
+  display: flex;
+  gap: 30px;
+}
+
+nav ul li {
+  list-style: none;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+nav ul li:hover {
+  color: #00eaff;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  background: url('https://images.unsplash.com/photo-1605902711622-cfb43c4437b5') center/cover no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 20, 40, 0.7);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: 65px;
+  text-shadow: 0 0 25px #00eaff;
+}
+
+.hero p {
+  margin: 20px 0;
+}
+
+/* BUTTON */
+.btn {
+  padding: 14px 30px;
+  background: linear-gradient(45deg, #00eaff, #0077ff);
+  border: none;
+  border-radius: 30px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 0 15px #00eaff;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px #00eaff;
+}
+
+/* HERO BUTTONS */
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+/* BLOG */
+.blog {
+  padding: 80px 10%;
+}
+
+/* ✅ NEW GRID */
+#projectContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+/* ✅ UPDATED CARD ONLY */
+.card {
+  padding: 20px;
+  border-radius: 15px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* ARTICLE VIEW */
+#articleView {
+  display: none;
+  padding: 80px 10%;
+}
+
+/* CONTACT */
+.newsletter {
+  text-align: center;
+  padding: 80px 10%;
+
+  /* 🔥 NEW */
+  margin: 60px 10%;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 30px rgba(0, 234, 255, 0.2);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.newsletter input {
+  padding: 12px;
+  width: 250px;
+  border: none;
+  border-radius: 5px;
+}
+
+.newsletter button {
+  padding: 12px 20px;
+  background: #00eaff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+
+}
+
+.contact {
+  margin-top: 50px; /* increase/decrease as you like */
+}
+/* 
+.contact {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+} */
+.connect-title {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.contact-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* MOBILE */
+@media(max-width: 768px) {
+  .hero h1 {
+    font-size: 40px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <h1>MY_BLOG</h1>
+  <ul>
+    <li onclick="scrollToSection('home')">Home</li>
+    <li onclick="scrollToSection('projects')">Projects</li>
+    <li onclick="scrollToSection('contact')">Contact</li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <h1>Ocean Dev</h1>
+    <p>Building Projects • Writing Code • Exploring Ideas</p>
+
+    <div class="hero-buttons">
+      <button class="btn" onclick="scrollToSection('projects')">Explore Projects</button>
+      <a href="#" class="btn">View Portfolio</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="blog" id="projects">
+  <h2>Latest Projects</h2>
+  <br>
+
+  <div id="projectContainer"></div>
+</section>
+
+<!-- ARTICLE VIEW -->
+<section id="articleView"></section>
+
+<!-- CONTACT -->
+<section class="newsletter" id="contact">
+  <h2>Subscribe</h2>
+  <br>
+
+  <input type="email" placeholder="Enter your email">
+  <button>Subscribe</button>
+  <br>
+
+  <!-- <div class="contact">
+    <h3 style="margin-top:30px;">Connect</h3>
+    <br>
+    <a href="#" class="btn">GitHub</a>
+    <a href="#" class="btn">LinkedIn</a>
+  </div> -->
+  <div class="contact">
+  <h3 class="connect-title">Connect</h3>
+
+  <div class="contact-buttons">
+    <a href="https://github.com/Ramjianonmyous" class="btn">GitHub</a>
+    <a href="https://www.linkedin.com/in/ram-kaithwas-329419257/" class="btn">LinkedIn</a>
+  </div>
+</div>
+</section>
+
+<script>
+
+/* DATA */
+let projects = [
+  {
+    title: "AI Desktop Assistant",
+    desc: "Voice-controlled automation system",
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995",
+    content: "Built an AI-powered desktop assistant using Node.js and Python that performs tasks like opening apps, browsing, reminders, and system automation using voice commands and NLP."
+  },
+  {
+    title: "Real-Time Chat App",
+    desc: "Socket.IO messaging platform",
+    image: "https://images.unsplash.com/photo-1611605698335-8b1569810432",
+    content: "Developed a real-time chat application using MERN stack and Socket.IO with features like group chats, typing indicators, and authentication."
+  },
+  {
+    title: "E-Commerce Dashboard",
+    desc: "dashboard panel for online store",
+    image: "https://images.unsplash.com/photo-1556745757-8d76bdb6984b",
+    content: "Created a secure and scalable e-commerce backend using Node.js, Express, and MongoDB with JWT authentication, payment integration, and admin dashboard."
+  },
+  {
+    title: "Smart Museum AI Robot",
+    desc: "IoT + AI integration",
+    image: "https://images.unsplash.com/photo-1581090700227-4c4c1c0c0b4b",
+    content: "Designed an ESP32-based museum guide robot with speech recognition (STT), text-to-speech (TTS), and real-time API responses for interactive guidance."
+  },
+  {
+    title: "Developer Portfolio",
+    desc: "Dynamic content system",
+    image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d",
+    content: "Built a portfolio website with a custom CMS allowing users to add/edit projects dynamically without modifying code, using JSON and local storage."
+  },
+  {
+    title: "Task Manager Web-App",
+    desc: "Productivity tool",
+    image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b",
+    content: "Created a full-stack task management app with features like drag-and-drop tasks, deadlines, reminders, and user authentication using MERN stack."
+  }
+];
+
+/* LOAD */
+function loadProjects() {
+  const container = document.getElementById("projectContainer");
+
+  container.innerHTML = projects.map((p, i) => `
+    <div class="card" onclick="openProject(${i})">
+      <img src="${p.image}">
+      <h3>${p.title}</h3>
+      <p>${p.desc}</p>
+      <button class="btn">Read More</button>
+    </div>
+  `).join("");
+}
+
+/* OPEN */
+function openProject(index) {
+  const p = projects[index];
+
+  document.getElementById("projects").style.display = "none";
+
+  const article = document.getElementById("articleView");
+  article.style.display = "block";
+
+  article.innerHTML = `
+    <button class="btn" onclick="goBack()">⬅ Back</button>
+    <h1 style="margin-top:20px;">${p.title}</h1>
+    <p style="margin-top:10px;">${p.content}</p>
+  `;
+}
+
+/* BACK */
+function goBack() {
+  document.getElementById("articleView").style.display = "none";
+  document.getElementById("projects").style.display = "block";
+}
+
+/* SCROLL */
+function scrollToSection(id) {
+  document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+}
+
+loadProjects();
+
+</script>
+
+</body>
+</html>
